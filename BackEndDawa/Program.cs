@@ -4,6 +4,7 @@ using BackEndDawa.Services.Ports;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var AllowOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
 
@@ -14,6 +15,19 @@ builder.Services.AddDbContext<ContextConnection>(options => options.UseSqlServer
 
 // -- Add services to the container
 builder.Services.AddScoped<ICompanyService, CompanyServiceImpl>();
+
+
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowOrigins,
+        policy =>
+        { 
+            policy.AllowAnyHeader( )
+            .AllowAnyMethod()
+            .AllowAnyOrigin();
+        });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
