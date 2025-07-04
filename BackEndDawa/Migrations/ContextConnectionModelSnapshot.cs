@@ -67,6 +67,7 @@ namespace BackEndDawa.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clients");
+
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.Company", b =>
@@ -141,6 +142,7 @@ namespace BackEndDawa.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Reserves");
+
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.UserClient", b =>
@@ -170,6 +172,7 @@ namespace BackEndDawa.Migrations
                     b.HasIndex("ClientId");
 
                     b.ToTable("UserClients");
+
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.UserCompany", b =>
@@ -188,6 +191,7 @@ namespace BackEndDawa.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -196,6 +200,7 @@ namespace BackEndDawa.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("UserCompanies");
+
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.Vehicle", b =>
@@ -261,6 +266,7 @@ namespace BackEndDawa.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Vehicles");
+
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.Reserve", b =>
