@@ -2,7 +2,7 @@
 
 namespace BackEndDawa.Services.Ports
 {
-    public interface ICompanyService
+    public interface ICompany
     {
         Task<IEnumerable<Company>> GetAllCompaniesAsync();
 
