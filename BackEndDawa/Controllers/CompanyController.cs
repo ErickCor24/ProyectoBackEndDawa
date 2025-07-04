@@ -1,18 +1,20 @@
 ﻿using BackEndDawa.Models;
 using BackEndDawa.Services.Ports;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEndDawa.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class CompanyController : ControllerBase
     {
 
-        private readonly ICompanyService _companyService;
+        private readonly ICompany _companyService;
 
-        public CompanyController(ICompanyService companyService)
+        public CompanyController(ICompany companyService)
         {
             _companyService = companyService;
         }

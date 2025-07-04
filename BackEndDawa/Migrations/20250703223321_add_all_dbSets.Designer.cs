@@ -4,6 +4,7 @@ using BackEndDawa.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndDawa.Migrations
 {
     [DbContext(typeof(ContextConnection))]
-    partial class ContextConnectionModelSnapshot : ModelSnapshot
+    [Migration("20250703223321_add_all_dbSets")]
+    partial class add_all_dbSets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +70,6 @@ namespace BackEndDawa.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clients");
-
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.Company", b =>
@@ -142,7 +144,6 @@ namespace BackEndDawa.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Reserves");
-
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.UserClient", b =>
@@ -172,7 +173,6 @@ namespace BackEndDawa.Migrations
                     b.HasIndex("ClientId");
 
                     b.ToTable("UserClients");
-
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.UserCompany", b =>
@@ -191,7 +191,6 @@ namespace BackEndDawa.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -200,7 +199,6 @@ namespace BackEndDawa.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("UserCompanies");
-
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.Vehicle", b =>
@@ -266,7 +264,6 @@ namespace BackEndDawa.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Vehicles");
-
                 });
 
             modelBuilder.Entity("BackEndDawa.Models.Reserve", b =>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BackEndDawa.Services.Application
 {
-    public class CompanyServiceImpl : ICompanyService
+    public class CompanyServiceImpl : ICompany
     {
 
         private readonly ContextConnection _context;
