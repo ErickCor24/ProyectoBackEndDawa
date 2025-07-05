@@ -60,7 +60,7 @@ namespace BackEndDawa.Controllers
 
             } catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { isSucces = false, mesagge = ex });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { isSucces = false, result = ex });
             }
         }
     }

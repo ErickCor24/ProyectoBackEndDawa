@@ -28,7 +28,7 @@ namespace BackEndDawa.Services.Application
         public async Task<UserCompany> RegisterUser(Company company, string passwoord)
         {
             await _context.Companies.AddAsync(company);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
 
             var lastId = company.Id;
 
