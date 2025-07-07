@@ -12,8 +12,6 @@ namespace BackEndDawa.Infrastructure
         public DbSet<UserClient> UserClients { get; set; }
         public DbSet<Reserve> Reserves { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
-
-        public DbSet<Vehicle> Vehicle { get; set; }
         public ContextConnection(DbContextOptions<ContextConnection> options) : base(options)
         {
         }

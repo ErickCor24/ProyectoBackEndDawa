@@ -18,7 +18,7 @@ namespace BackEndDawa.Services.Application
         {
             try
             {
-                return await _context.Vehicle.Where(v => v.Status == true).ToListAsync();
+                return await _context.Vehicles.Where(v => v.Status == true).ToListAsync();
             } catch (Exception ex)
             {
                 throw new Exception($"An error ocurred: {ex.Message}", ex);
@@ -29,7 +29,7 @@ namespace BackEndDawa.Services.Application
         {
             try
             {
-                return await _context.Vehicle.FindAsync(vehicleId);
+                return await _context.Vehicles.FindAsync(vehicleId);
             }
             catch (Exception ex)
             {
@@ -41,7 +41,7 @@ namespace BackEndDawa.Services.Application
         {
             try
             {
-                return await _context.Vehicle.Where(v => v.CompanyId == companyId).ToListAsync();
+                return await _context.Vehicles.Where(v => v.CompanyId == companyId).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace BackEndDawa.Services.Application
         {
             try
             {
-                var vehicles = _context.Vehicle.AsQueryable();
+                var vehicles = _context.Vehicles.AsQueryable();
 
                 switch (field.ToLower().Trim())
                 {
@@ -86,7 +86,7 @@ namespace BackEndDawa.Services.Application
         {
             try
             {
-                _context.Vehicle.Add(vehicle);
+                _context.Vehicles.Add(vehicle);
                 await _context.SaveChangesAsync();
                 return vehicle;
             }
@@ -100,7 +100,7 @@ namespace BackEndDawa.Services.Application
         {
             try
             {
-                var updatedVehicle = await _context.Vehicle.FindAsync(vehicle.Id);
+                var updatedVehicle = await _context.Vehicles.FindAsync(vehicle.Id);
                 if (updatedVehicle == null)
                     throw new KeyNotFoundException("Vehicle not found");
 
@@ -119,7 +119,7 @@ namespace BackEndDawa.Services.Application
         {
             try
             {
-                var deletedVehicle = await _context.Vehicle.FindAsync(vehicleId);
+                var deletedVehicle = await _context.Vehicles.FindAsync(vehicleId);
                 if (deletedVehicle == null || !deletedVehicle.Status)
                     return false;
 
