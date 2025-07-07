@@ -20,6 +20,8 @@ builder.Services.AddDbContext<ContextConnection>(options => options.UseSqlServer
 // -- Add services to the container
 builder.Services.AddScoped<ICompany, CompanyServiceImpl>();
 builder.Services.AddScoped<IUserCompany, UserCompanySericeImpl>();
+builder.Services.AddScoped<IClientService, ClientServiceImpl>();
+builder.Services.AddScoped<IUserClient, UserClientServiceImpl>();
 
 builder.Services.AddSingleton<ServiceUtility>();
 
