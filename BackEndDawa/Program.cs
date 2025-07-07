@@ -15,7 +15,7 @@ builder.Services.AddDbContext<ContextConnection>(options => options.UseSqlServer
 
 // -- Add services to the container
 builder.Services.AddScoped<ICompanyService, CompanyServiceImpl>();
-
+builder.Services.AddScoped<IVehicleService, VehicleServiceImpl>();
 
 // CORS
 builder.Services.AddCors(options =>
@@ -27,6 +27,14 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()
             .AllowAnyOrigin();
         });
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        builder => builder.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 });
 
 builder.Services.AddControllers();
@@ -42,6 +50,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(AllowOrigins);
+
 
 app.UseHttpsRedirection();
 

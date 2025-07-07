@@ -1,5 +1,4 @@
-﻿
-using BackEndDawa.Models;
+﻿using BackEndDawa.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackEndDawa.Infrastructure
@@ -9,6 +8,7 @@ namespace BackEndDawa.Infrastructure
         //DbSets here
         public DbSet<Company> Companies{ get; set; }
 
+        public DbSet<Vehicle> Vehicle { get; set; }
         public ContextConnection(DbContextOptions<ContextConnection> options) : base(options)
         {
         }
@@ -52,6 +52,5 @@ namespace BackEndDawa.Infrastructure
 
             //Others relations below
         }
-
     }
 }
