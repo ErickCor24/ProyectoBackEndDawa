@@ -8,6 +8,8 @@ namespace BackEndDawa.Services.Ports
 
         Task<Company> GetCompanyByIdAsync(int id);
 
+        Task<IEnumerable<Company>> GetCompanyByNameAsync(string name);
+
         Task<Company> UpdateCompanyAsync(Company company);
 
         Task<Company> DeletCompanyAsync(int id);

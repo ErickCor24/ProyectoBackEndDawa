@@ -29,7 +29,7 @@ namespace BackEndDawa.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { isSucces = true, result = ex });
+                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, result = ex });
             }
         }
 
@@ -39,25 +39,40 @@ namespace BackEndDawa.Controllers
             try
             {
                 var company = await _companyService.GetCompanyByIdAsync(id);
-                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, data = company });
+                return StatusCode(StatusCodes.Status200OK, new { isSucces = true, result = company });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, data = ex });
+                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, result = ex });
             }
         }
 
-        [HttpPut]
-        public async Task<ActionResult<Company>> Put([FromBody] Company company)
+        [HttpPut ("{id}")]
+        public async Task<ActionResult<Company>> Put([FromBody] Company company, int id)
         {
+            company.Id = id;
             try
             {
                 var updatedCompany = await _companyService.UpdateCompanyAsync(company);
-                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, data = updatedCompany });
+                return StatusCode(StatusCodes.Status200OK, new { isSucces = true, result = updatedCompany });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, error = ex });
+                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, result = ex });
+            }
+        }
+
+        [HttpGet ("byname")]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            try
+            {
+                var companies = await _companyService.GetCompanyByNameAsync(name);
+                return StatusCode(StatusCodes.Status200OK, new { isSucces = true, result = companies });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, result = ex });
             }
         }
 
@@ -67,11 +82,11 @@ namespace BackEndDawa.Controllers
             try
             {
                 await _companyService.DeletCompanyAsync(id);
-                return StatusCode(StatusCodes.Status200OK, new { isSucces = true, data = $"Company with {id} has deleted"});
+                return StatusCode(StatusCodes.Status200OK, new { isSucces = true, result = $"Company with {id} has deleted"});
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, data = ex });
+                return StatusCode(StatusCodes.Status200OK, new { isSucces = false, result = ex });
             }
         }
     }
