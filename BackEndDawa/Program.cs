@@ -25,6 +25,7 @@ builder.Services.AddScoped<IUserClient, UserClientServiceImpl>();
 
 builder.Services.AddSingleton<ServiceUtility>();
 
+builder.Services.AddScoped<IReserve, ReserveServiceImpl>();
 
 // CORS
 builder.Services.AddCors(options =>
