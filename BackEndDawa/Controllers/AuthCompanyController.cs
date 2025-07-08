@@ -4,6 +4,7 @@ using BackEndDawa.Services.Ports;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace BackEndDawa.Controllers
 {
@@ -41,10 +42,9 @@ namespace BackEndDawa.Controllers
                 }
 
             }
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new {isSucces = false, mesagge = ex});
-
+                return StatusCode(StatusCodes.Status204NoContent, new {isSucces = false, token = ex});
             }
 
         }

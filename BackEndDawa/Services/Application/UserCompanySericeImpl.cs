@@ -15,14 +15,9 @@ namespace BackEndDawa.Services.Application
             _context = context;
         }
 
-        public async Task<UserCompany> LoginUser(User user)
+        public async Task<UserCompany?> LoginUser(User user)
         {
-            var userFound = await _context.UserCompanies.Where(u => u.Email == user.Email && u.Password == user.Password).FirstOrDefaultAsync();
-            if (userFound != null)
-            {
-                return userFound;
-            }
-            else throw new Exception("User not found");
+            return await _context.UserCompanies.Where(u => u.Email == user.Email && u.Password == user.Password && u.Company!.Status == true).FirstOrDefaultAsync();
         }
 
         public async Task<UserCompany> RegisterUser(Company company, string passwoord)
