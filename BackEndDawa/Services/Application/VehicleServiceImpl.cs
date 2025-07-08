@@ -57,21 +57,20 @@ namespace BackEndDawa.Services.Application
 
                 switch (field.ToLower().Trim())
                 {
-                    case "marca":
+                    case "brand":
                         vehicles = vehicles.Where(v => EF.Functions.Like(v.Brand, $"%{value}%"));
                         break;
-                    case "modelo":
+                    case "model":
                         vehicles = vehicles.Where(v => EF.Functions.Like(v.Model, $"%{value}%"));
                         break;
                     case "color":
                         vehicles = vehicles.Where(v => EF.Functions.Like(v.Color, $"%{value}%"));
                         break;
-                    case "transmisión":
-                    case "transmision":
+                    case "transmission":
                         vehicles = vehicles.Where(v => EF.Functions.Like(v.Transmission, $"%{value}%"));
                         break;
                     default:
-                        throw new ArgumentException("Invalid field specified");
+                        throw new ArgumentException("Invalid field specified", field);
                 }
 
                 return await vehicles.ToListAsync();
