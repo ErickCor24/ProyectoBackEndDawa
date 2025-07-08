@@ -19,7 +19,7 @@ namespace BackEndDawa.Services.Application
         {
             try
             {
-            return await _context.Companies.ToListAsync();
+            return await _context.Companies.Where(c => c.Status == true).ToListAsync();
 
             } catch (Exception ex)
             {
@@ -48,6 +48,11 @@ namespace BackEndDawa.Services.Application
             {
                 var existingCompany = await GetCompanyByIdAsync(company.Id);
                 _context.Entry(existingCompany).CurrentValues.SetValues(company);
+
+                var useraccount = new UserCompany { Id = company.Id, Email = company.Email };
+                _context.UserCompanies.Attach(useraccount);
+                _context.Entry(useraccount).Property(u => u.Email).IsModified = true;
+
                 await _context.SaveChangesAsync();
                 return existingCompany;
             }
@@ -67,6 +72,18 @@ namespace BackEndDawa.Services.Application
             _context.Companies.Update(company);
             _context.SaveChangesAsync();
             return Task.FromResult(company);
+        }
+
+        public async Task<IEnumerable<Company>> GetCompanyByNameAsync(string name)
+        {
+            if(string.IsNullOrWhiteSpace(name))
+            {
+                return await _context.Companies.Where(c => c.Status == true).ToListAsync();
+            }
+            else
+            {
+                return await _context.Companies.Where(c => c.Name.ToLower().Contains(name.ToLower()) && c.Status == true).ToListAsync();
+            }
         }
     }
 }

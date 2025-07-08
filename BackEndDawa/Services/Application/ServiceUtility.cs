@@ -33,7 +33,7 @@ namespace BackEndDawa.Services.Application
             {
                 var jwtConfig = new JwtSecurityToken(
                     claims: CreateClaims(user, role),
-                    expires: DateTime.UtcNow.AddMinutes(10),
+                    expires: DateTime.UtcNow.AddMinutes(360),
                     signingCredentials: credentials
                     );
                 return new JwtSecurityTokenHandler().WriteToken(jwtConfig);
