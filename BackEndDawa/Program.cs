@@ -22,6 +22,7 @@ builder.Services.AddScoped<ICompany, CompanyServiceImpl>();
 builder.Services.AddScoped<IUserCompany, UserCompanySericeImpl>();
 builder.Services.AddScoped<IClientService, ClientServiceImpl>();
 builder.Services.AddScoped<IUserClient, UserClientServiceImpl>();
+builder.Services.AddScoped<IVehicleService, VehicleServiceImpl>();
 
 builder.Services.AddSingleton<ServiceUtility>();
 
