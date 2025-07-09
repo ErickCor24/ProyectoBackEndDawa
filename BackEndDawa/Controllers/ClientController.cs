@@ -18,7 +18,7 @@ namespace BackEndDawa.Controllers
 
         // GET: api/client - Obtener todos los clientes
         [HttpGet]
-        [Authorize(Roles = "client")]
+        [Authorize(Roles = "client,company")]
         public async Task<ActionResult<IEnumerable<Client>>> GetAllClients()
         {
             try
@@ -34,7 +34,7 @@ namespace BackEndDawa.Controllers
 
         // GET: api/client/{id} - Obtener cliente por ID
         [HttpGet("{id}")]
-        [Authorize(Roles = "client")]
+        [Authorize(Roles = "client,company")]
         public async Task<ActionResult<Client>> GetClientById(int id)
         {
             try
@@ -114,7 +114,7 @@ namespace BackEndDawa.Controllers
 
         // GET: api/client/search - Búsqueda completa
         [HttpGet("search")]
-        [Authorize(Roles = "client")]
+        [Authorize(Roles = "client,company")]
         public async Task<ActionResult<IEnumerable<Client>>> SearchClients(
             [FromQuery] string? name = null,
             [FromQuery] string? email = null,
