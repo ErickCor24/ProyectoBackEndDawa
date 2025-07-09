@@ -26,6 +26,7 @@ builder.Services.AddScoped<IVehicleService, VehicleServiceImpl>();
 
 builder.Services.AddSingleton<ServiceUtility>();
 
+builder.Services.AddScoped<IReserve, ReserveServiceImpl>();
 
 // CORS
 builder.Services.AddCors(options =>
