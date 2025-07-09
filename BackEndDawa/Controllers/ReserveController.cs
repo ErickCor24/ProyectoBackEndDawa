@@ -8,7 +8,7 @@ namespace BackEndDawa.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "client")]
+    [Authorize(Roles = "client")]
     public class ReserveController : ControllerBase
     {
         private readonly IReserve _reserveService;
@@ -47,7 +47,6 @@ namespace BackEndDawa.Controllers
         }
 
         [HttpPut("{id}")]
-        //[Authorize] // opcional si ya protegiste la ruta
         public async Task<IActionResult> PutReserve(int id, Reserve reserve)
         {
             if (id != reserve.Id)
@@ -67,7 +66,6 @@ namespace BackEndDawa.Controllers
             }
         }
         [HttpDelete("{id}")]
-        [Authorize] // Opcional, si ya estás usando JWT
         public async Task<IActionResult> DeleteReserve(int id)
         {
             try
