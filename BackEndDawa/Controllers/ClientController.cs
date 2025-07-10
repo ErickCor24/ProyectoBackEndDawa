@@ -41,7 +41,7 @@ namespace BackEndDawa.Controllers
             {
                 var client = await _clientService.GetClientByIdAsync(id);
                 if (client == null)
-                    return NotFound(new { message = "Client not found" });
+                    return NotFound(new { message = "Cliente no Encontrado" });
                 return Ok(client);
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace BackEndDawa.Controllers
 
                 var updatedClient = await _clientService.UpdateClientAsync(id, client);
                 if (updatedClient == null)
-                    return NotFound(new { message = "Client not found" });
+                    return NotFound(new { message = "Cliente no Encontrado" });
 
                 return Ok(updatedClient);
             }
@@ -100,7 +100,7 @@ namespace BackEndDawa.Controllers
             {
                 var client = await _clientService.GetClientByIdAsync(id);
                 if (client == null)
-                    return NotFound(new { message = "Client not found" });
+                    return NotFound(new { message = "Cliente no Encontrado" });
 
                 client.Status = false; // Eliminación lógica
                 var updatedClient = await _clientService.UpdateClientAsync(id, client);
@@ -142,7 +142,7 @@ namespace BackEndDawa.Controllers
             {
                 var client = await _clientService.GetClientByCiAsync(ci);
                 if (client == null)
-                    return NotFound(new { message = "Client not found" });
+                    return NotFound(new { message = "Cliente no Encontrado" });
                 return Ok(client);
             }
             catch (Exception ex)

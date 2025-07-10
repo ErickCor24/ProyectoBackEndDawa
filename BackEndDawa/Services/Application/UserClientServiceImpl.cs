@@ -23,7 +23,7 @@ namespace BackEndDawa.Services.Application
             {
                 return userFound;
             }
-            else throw new Exception("User not found");
+            else throw new Exception("Usuario no Encontrado");
         }
 
         public async Task<UserClient> RegisterUser(Client client, string passwoord)
