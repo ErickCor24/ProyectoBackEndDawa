@@ -26,7 +26,7 @@ namespace BackEndDawa.Services.Application
             }
             catch (Exception ex)
             {
-                throw new Exception("An error occurred while retrieving clients", ex);
+                throw new Exception("Se produjo un error al recuperar clientes", ex);
             }
         }
 
@@ -39,7 +39,7 @@ namespace BackEndDawa.Services.Application
             }
             catch (Exception ex)
             {
-                throw new Exception($"An error occurred while retrieving client with id {id}", ex);
+                throw new Exception($"Se produjo un error al recuperar el cliente con id {id}", ex);
             }
         }
 
@@ -52,7 +52,7 @@ namespace BackEndDawa.Services.Application
             }
             catch (Exception ex)
             {
-                throw new Exception($"An error occurred while retrieving client with CI {ci}", ex);
+                throw new Exception($"Se produjo un error al recuperar el cliente con Ci {ci}", ex);
             }
         }
 
@@ -65,7 +65,7 @@ namespace BackEndDawa.Services.Application
                     .FirstOrDefaultAsync(c => c.Email == client.Email);
                 if (existingClient != null)
                 {
-                    throw new Exception("A client with this email already exists");
+                    throw new Exception("Ya existe un cliente con este correo electronico");
                 }
 
                 client.Status = true;
@@ -113,7 +113,7 @@ namespace BackEndDawa.Services.Application
                         .AnyAsync(c => c.Email == client.Email && c.Id != id);
                     if (emailExists)
                     {
-                        throw new Exception("A client with this email already exists");
+                        throw new Exception("Ya existe un cliente con este correo electronico");
                     }
                 }
 
@@ -140,7 +140,7 @@ namespace BackEndDawa.Services.Application
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                throw new Exception($"An error occurred while updating client with id {id}", ex);
+                throw new Exception($"Se produjo un error al actualizar el cliente  {id}", ex);
             }
         }
 
@@ -169,7 +169,7 @@ namespace BackEndDawa.Services.Application
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                throw new Exception($"An error occurred while deleting client with id {id}", ex);
+                throw new Exception($"Se produjo un error al eliminar el cliente  {id}", ex);
             }
         }
 
@@ -213,7 +213,7 @@ namespace BackEndDawa.Services.Application
             }
             catch (Exception ex)
             {
-                throw new Exception("An error occurred while searching clients", ex);
+                throw new Exception("Se produjo un error al buscar clientes.", ex);
             }
         }
     }
